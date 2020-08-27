@@ -4,7 +4,7 @@ My 759th place solution to the SIIM-ISIC Melanoma Classification Competition hos
 
 ## Overview
 
-My final solution was an ensemble and TTA of 8 models all trained differently. I used [@cdeotte](https://www.kaggle.com/cdeotte)'s Triple Stratified Leak-Free KFold CV data with external data from past competitions and other places as well as upsampling malignant samples.
+My final solution was an ensemble and TTA of 8 models all trained differently. I used [@cdeotte](https://www.kaggle.com/cdeotte)'s [Triple Stratified Leak-Free KFold CV data](https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/165526) with external data from past competitions and other places as well as upsampling malignant samples.
 
 ## Model
 
@@ -12,19 +12,19 @@ There were two different types of models: Image only model and Image + Meta Data
 
 Image only model was a simple pretrained efficientnet with a simple double linear layer head.
 
-Meta + Image model concatanates meta data features, after the tabular data goes though a double linear layer head, with the output from the pretrained efficientnet. Then the combined features go through two more linear layers.
+Meta + Image model concatenates meta data features, after the tabular data goes though a double linear layer head, with the output from the pretrained efficientnet. Then the combined features go through two more linear layers.
 
 Both pretrained models were loaded from [PytorchCV](https://github.com/osmr/imgclsmob).
 
 The models were trained with either BCE or focal loss and with or without label smoothing.
 
-Most models also used Pytorch's new AMP mixed precision for training but some models trained without it ended up in the final blend.
+Most models also used Pytorch's new amp mixed precision for training but some models trained without it ended up in the final blend.
 
 ## Input and Augmentation
 
 I used Chris Deotte's [Triple Stratified Leak-Free KFold CV](https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/165526) data as input. I mostly trained with an image size of 512x512 but trained a few models with an image size of 384x384.
 
-I also mixed what external data and upsamling I used and the final blend is a mix of models with differing setups.
+I also mixed what external data and upsamling I used and the final blend is a mix of models with differing setups. External data included images from the 2018 and 2019 Melanoma competitions as well as unique malignant samples collected by Chris.
 
 For augmentation I used [Albumentations](https://albumentations.readthedocs.io/en/latest/api/augmentations.html) and used SSR, Affine augmentations, Random flips, Random Brightness Contrast, and Cutout. I also used custom augmentations like [Advanced Hair Augmentation](https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/159176) and [Microscope](https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/159476#900271) augmentation in some training configurations.
 
