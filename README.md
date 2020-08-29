@@ -48,6 +48,7 @@ Very glad to see that my ensemble of just models with low CV to LB discrepency p
 
 - Other models besides efficient nets
 - Efficient nets bigger than B4
+- For meta model, pretraining backbone then freezing it for training on tabular only
 
 Did not experiment much so list is rather short
 
