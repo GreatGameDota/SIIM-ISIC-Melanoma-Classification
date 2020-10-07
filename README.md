@@ -58,4 +58,4 @@ I joined this competition very late with only around 2-3 weeks left. I am conten
 
 My previous competition: [PANDA Challenge](https://github.com/GreatGameDota/PANDA-Challenge-Solution)
 
-My next competition: [placeholder]
+My next competition: [OSIC Pulmonary Fibrosis Prediction](https://github.com/GreatGameDota/OSIC-Pulmonary-Fibrosis-Prediction)
